@@ -46,8 +46,6 @@ class Store {
     }
 
     commit = (method, payload) => {
-        debugger
-        console.log('this', this);
         this.mutations[method](payload);
     }
 
@@ -58,11 +56,9 @@ class Store {
 
 //插件固定写法
 const install = (v) => {
-    // console.log(v);
     Vue = v;
     Vue.mixin({ //需要在每一个组件上添加$store
         beforeCreate() {
-            console.log(this.$options.name);
             if (this.$options && this.$options.store) {
                 //root
                 this.$store = this.$options.store;
